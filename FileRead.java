@@ -4,35 +4,55 @@ package com_file.topicmodeler;
 import java.io.*;
 import java.util.*;
 
-
 public class FileRead {
-	
+
 	public void readfile(String filename, int n) 
 	{
 		
         HashMap<String,Integer> WordList = new HashMap<>();
 		ArrayList<String> list = new ArrayList<String>();
-
-		int WordCount[];
+		ArrayList<String> stoplist = new ArrayList<String>();
 		
-		
-	try(LineNumberReader r = new LineNumberReader(new FileReader (filename))) 
+	try(LineNumberReader lr = new LineNumberReader(new FileReader (filename)))
 		{
-				String line = " ";
-				
-				
-				while((line = r.readLine()) != null) 
+			LineNumberReader blr = new LineNumberReader(new FileReader ("stop_words.txt"));
+					
+			String line = " ";
+			String stop_word = " ";
+
+			while((stop_word = blr.readLine()) != null) 
+			{
+		            //Adding all words generated     
+				for(String stopword : stop_word.toLowerCase().split(" "))	
+		            {    
+						
+							stoplist.add(stopword);
+		            }
+		        }
+			
+			while((line = lr.readLine()) != null) 
 				{
 			            //Adding all words generated     
-					for(String word : line.toLowerCase().split(" "))	
-			            {    
-			                list.add(word);  
-			            } 
+				for(String word : line.toLowerCase().split(" "))
+					{    
+							if(stoplist.contains(word))
+								{
+								//nothing will be added to the list if it is contained in the stop words text file
+								}
+						
+							else 
+								{
+					                list.add(word);  
+					            } 
+					}
 				}
 				
 				Set<String> number = new HashSet<String>(list);
+				
+				int WordCount[];
 				WordCount= new int[list.size()];
 				int i= 0;
+				
 				for (String key : number) 
 				{
 					
@@ -43,7 +63,7 @@ public class FileRead {
 				
 					
 					WordList.entrySet().stream().sorted(Map.Entry.<String, Integer>comparingByValue().reversed()).limit(n).forEach(x ->
-		                {
+						{
 		                	System.out.println(x.getKey() + " = "+ x.getValue());
 		                	
 		                });					
