@@ -1,13 +1,9 @@
 package com_file.topicmodeler;
 
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.io.*;
 import java.util.*;
-import java.util.Set;
+
 
 public class FileRead {
 	
@@ -45,42 +41,13 @@ public class FileRead {
 					i++;
 				}
 				
-				
-					int temp;
-					int size = WordCount.length;
-					int small = -1;
 					
-					for( i = 0; i < size-1; i++)   
-						{  
-						small = i;
-						
-						for (int j = i ; j <= size-1; j++)
-			      		{
-			        		if (WordCount[j] > WordCount[small])
-			        		{
-			           			small = j;
-			        		}
-			        		//swap values
-			      		}
-			        		temp = WordCount[i];
-			        		WordCount[i] = WordCount[small];
-			        		WordCount[small] = temp; 
-								
-						}
-					for (i = 0; i < size; i++) 
-			      	{     
-			      		System.out.println(WordCount[i]);  
-			   		}
-					WordList.entrySet().stream()
-	                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
-	                .forEach(x -> {
-	                     System.out.println(x.getKey() + ","+ x.getValue());
-	                });
-					
+					WordList.entrySet().stream().sorted(Map.Entry.<String, Integer>comparingByValue().reversed()).limit(n).forEach(x ->
+		                {
+		                	System.out.println(x.getKey() + " = "+ x.getValue());
+		                	
+		                });					
 				}
-				
-				
-			
 				
 
 		catch (IOException e) 
@@ -88,6 +55,13 @@ public class FileRead {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 }
+
+
+
+/*
+References
+
+lines 74-78 was found online via stackoverflow (https://stackoverflow.com/questions/43922882/how-to-print-hashmap-elements-from-max-to-min) 
+*/
