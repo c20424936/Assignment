@@ -7,9 +7,10 @@ public class Control {
 		FileRead file1 = new FileRead();
 		FileRead file2 = new FileRead();
 		
-		file1.readfile("example.txt",10);
+		file1.readfile("Example.txt",10);
 		System.out.println("\n");
-		file2.readfile("Cover.txt",9);
+		file2.readfile("UntilDawn.txt",10);
+		
 		
 	}
 	

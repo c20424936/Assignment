@@ -6,20 +6,26 @@ import java.util.*;
 
 public class FileRead {
 
+	static int L = 0;
+	static HashMap<String,Integer> TempList = new HashMap<>();
+	
 	public void readfile(String filename, int n) 
 	{
+		HashMap<String,Integer> WordList = new HashMap<>();
 		
-        HashMap<String,Integer> WordList = new HashMap<>();
 		ArrayList<String> list = new ArrayList<String>();
 		ArrayList<String> stoplist = new ArrayList<String>();
+		int counter = 0;
 		
 	try(LineNumberReader lr = new LineNumberReader(new FileReader (filename)))
 		{
-			LineNumberReader blr = new LineNumberReader(new FileReader ("stop_words.txt"));
-					
+			@SuppressWarnings("resource")
+			LineNumberReader blr = new LineNumberReader(new FileReader ("stops.txt"));
+
 			String line = " ";
 			String stop_word = " ";
-
+			
+			
 			while((stop_word = blr.readLine()) != null) 
 			{
 		            //Adding all words generated     
@@ -35,15 +41,15 @@ public class FileRead {
 			            //Adding all words generated     
 				for(String word : line.toLowerCase().split(" "))
 					{    
-							if(stoplist.contains(word))
-								{
-								//nothing will be added to the list if it is contained in the stop words text file
-								}
+						if(stoplist.contains(word))
+							{
+//nothing will be added to the list if it is contained in the stop words text file
+							}
 						
-							else 
-								{
-					                list.add(word);  
-					            } 
+						else 
+							{
+								list.add(word);
+							} 
 					}
 				}
 				
@@ -62,12 +68,45 @@ public class FileRead {
 				}
 				
 					
-					WordList.entrySet().stream().sorted(Map.Entry.<String, Integer>comparingByValue().reversed()).limit(n).forEach(x ->
+					WordList.entrySet().stream().sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+					.limit(n)
+					.forEach(x ->
 						{
 		                	System.out.println(x.getKey() + " = "+ x.getValue());
-		                	
-		                });					
-				}
+		                });
+		                
+					for (String key : WordList.keySet())
+					{
+						 if (TempList.containsKey(key)) 
+			            	{ 
+			            		
+			            		// Okay, there's a key 
+			            		if (TempList.containsValue(WordList.get(key))) 
+				            	{ 
+				            	       // Okay, there's a value 
+				            			counter++;
+				            	}
+			            		
+			            		
+			            	}
+					}
+					
+					
+					if (L == 1)
+					{
+						double P = 0;
+						
+						P = (counter*100/WordList.size());
+						System.out.print(P + "%");
+					}
+					
+					if (L == 0) 
+					{
+						TempList.putAll(WordList);
+						L = 1;
+					} 
+					
+			}
 				
 
 		catch (IOException e) 
@@ -75,13 +114,14 @@ public class FileRead {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		}
+
+
 	}
-}
-
-
+	
 
 /*
 References
 
 lines 74-78 was found online via stackoverflow (https://stackoverflow.com/questions/43922882/how-to-print-hashmap-elements-from-max-to-min) 
-*/
+*/ 
