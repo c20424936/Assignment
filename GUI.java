@@ -9,30 +9,38 @@ import javax.swing.*;
 public class GUI extends FileRead implements ActionListener {
 	JLabel label1;
 	JButton button1, button2,button3,button4;
-	JPanel p1;
+	JPanel p1 , p2 ,p3;
 	JTextField Userinput;
 	String Name;
 	JFileChooser newfile;
 	String File1, File2 ;
-
+	int i;
 	
 	public GUI(String title)  
 	{
+		//Background creation
 		JFrame frame1 = new JFrame ("Reading Files");
-	
 		frame1.setVisible(true);
-		frame1.setSize(300,300);
+		frame1.setSize(500,500);
+		frame1.getContentPane().setBackground(new Color(5, 65, 90));
 		
-		
-		//Background and panel creation
+		//Panel creation
 		p1 = new JPanel();
 		frame1.add(p1);
+		p1.setBackground(Color.RED);
 		
-		SpringLayout layout = new SpringLayout();
-		p1.setLayout(layout);
+		p2 = new JPanel();
+		frame1.add(p2);
+		p2.setBackground(Color.BLACK);
 		
-		p1.setBackground(Color.GRAY);
-
+		p3 = new JPanel();
+		frame1.add(p3);
+		p3.setBackground(Color.BLUE);
+		
+		//Layout of the background
+		FlowLayout layout = new FlowLayout();
+		frame1.setLayout(layout);
+	
 		
 		//File 1
 		button1 = new JButton();
@@ -48,29 +56,32 @@ public class GUI extends FileRead implements ActionListener {
 		button2.setToolTipText("This is the Second File");
 		button2.addActionListener(this);
 	
-		//File 3
+		//Compare Files
 		button3 = new JButton();
-		p1.add(button3);
+		p3.add(button3);
 		button3.setText("Compare Files");
 		button3.setToolTipText("This will compare the files selected");
 		button3.addActionListener(this);
-
-		 
+		
+		//User Input
 		Userinput = new JTextField("Enter value of words to compare in files");
-		p1.add(Userinput);
+		p2.add(Userinput);
 		Userinput.addActionListener(this);
+		
+		//
+		button4 = new JButton();
+		p2.add(button4);
+		button4.setText("Get n number of words to compare");
+		button4.setToolTipText("This will compare the files selected");
+		button4.addActionListener(this);
 		 
+		//File Creation
 		newfile = new JFileChooser();
-		newfile.addActionListener(this);
-		 
-		layout.putConstraint(SpringLayout.NORTH,button1,25, SpringLayout.WEST, p1);
-		layout.putConstraint(SpringLayout.NORTH,button2,65, SpringLayout.NORTH, p1);
-		layout.putConstraint(SpringLayout.VERTICAL_CENTER,Userinput,0, SpringLayout.VERTICAL_CENTER, p1);
-		layout.putConstraint(SpringLayout.VERTICAL_CENTER,button3,35, SpringLayout.VERTICAL_CENTER, p1);
+		newfile.addActionListener(this);	
 	}
 		
-		@Override
-		public void actionPerformed(ActionEvent e)
+	@Override
+	public void actionPerformed(ActionEvent e)
 		{
 			if(e.getSource() == button1)
 			{
@@ -90,11 +101,16 @@ public class GUI extends FileRead implements ActionListener {
 				       File2 = newfile.getSelectedFile().getName();
 				    }
 			}
+			
+			else if(e.getSource() == button4)
+			{
+				
+				i = Integer.parseInt(Userinput.getText());
+			}
 		
 			else if(e.getSource() == button3)
 			{
 				
-				int i = Integer.parseInt(Userinput.getText());
 				readfile(File1,i);
 				readfile(File2,i);
 				
@@ -128,17 +144,8 @@ public class GUI extends FileRead implements ActionListener {
 							JOptionPane.showMessageDialog(button3,"\nThese files have " + P +"% in common\nThese files identical");
 							
 						}
-						counter = 0;
-						
-						
 					}	
 				}
 			}
 			
 		}
-
-		
-
-
-
-
