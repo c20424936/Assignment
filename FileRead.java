@@ -6,10 +6,10 @@ import java.util.*;
 
 public class FileRead {
 	
-		static int L = 0;
-		static HashMap<String,Integer> TempList = new HashMap<>();
+	static int L = 0;
+	static HashMap<String,Integer> TempList = new HashMap<>();
 		
-		public void readfile(String filename, int n) 
+	public static void readfile(String file, int n) 
 		{
 			HashMap<String,Integer> WordList = new HashMap<>();
 			
@@ -17,7 +17,7 @@ public class FileRead {
 			ArrayList<String> stoplist = new ArrayList<String>();
 			int counter = 0;
 			
-		try(LineNumberReader lr = new LineNumberReader(new FileReader (filename)))
+		try(LineNumberReader lr = new LineNumberReader(new FileReader (file)))
 			{
 				@SuppressWarnings("resource")
 				LineNumberReader blr = new LineNumberReader(new FileReader ("stops.txt"));
