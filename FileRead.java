@@ -7,15 +7,18 @@ import java.util.*;
 public class FileRead {
 	
 	static int L = 0;
+	static int counter = 0;
 	static HashMap<String,Integer> TempList = new HashMap<>();
-		
+	static HashMap<String,Integer> WordList = new HashMap<>();
+	
+	
 	public static void readfile(String file, int n) 
 		{
-			HashMap<String,Integer> WordList = new HashMap<>();
+			
 			
 			ArrayList<String> list = new ArrayList<String>();
 			ArrayList<String> stoplist = new ArrayList<String>();
-			int counter = 0;
+			
 			
 		try(LineNumberReader lr = new LineNumberReader(new FileReader (file)))
 			{
@@ -28,10 +31,9 @@ public class FileRead {
 				
 				while((stop_word = blr.readLine()) != null) 
 				{
-			            //Adding all words generated     
+					//Adding all stop words generated     
 					for(String stopword : stop_word.toLowerCase().split(" "))	
 			            {    
-							
 								stoplist.add(stopword);
 			            }
 			        }
@@ -57,7 +59,7 @@ public class FileRead {
 				int WordCount[];
 				WordCount= new int[list.size()];
 				int i= 0;
-					
+				
 				for (String key : number) 
 					{
 						WordList.put(key,Collections.frequency(list, key));
@@ -73,57 +75,28 @@ public class FileRead {
 			                	System.out.println(x.getKey() + " = "+ x.getValue());
 			                });
 			                
-						
+					
 					for (String key : WordList.keySet())
 						{
+						
 						 if (TempList.containsKey(key)) 
 				          	{ 
 							 
 				            	if (TempList.containsValue(WordList.get(key))) 
 					            { 
 				            		counter++;
+				            	 
 					            }
 				            		
 				            }
 						}
-						
-						
-					if (L == 1)
+						if (L == 0)
 						{
-							double P = 0;
-							
-							P = (counter*100/WordList.size());
-							System.out.print(P + "%");
-							
-							if (P <= 24)
-							{
-								System.out.print("\nThese files have nothing in common");
-							}
-							
-							else if (P < 50 && P >= 25) 
-							{
-								System.out.print("\nThese files are not very similar");
-							} 
-							
-							else if (P >= 50 && P <= 99) 
-								
-							{
-								System.out.print("\nThese files are very similar but not identical");
-							} 
-							
-							else if (P == 100) 
-							{
-								System.out.print("\nThese files identical");
-							}
-								
-						}
-						
-						if (L == 0) 
-						{
+
 							TempList.putAll(WordList);
 							L = 1;
-						} 
-						
+						}
+					
 				}
 					
 		
