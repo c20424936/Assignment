@@ -14,11 +14,10 @@ public class FileRead {
 	
 	public static void readfile(String file, int n) 
 		{
-		
 		 ArrayList<String> list = new ArrayList<String>();			
 		 try(LineNumberReader lr = new LineNumberReader(new FileReader (file)))
 				{
-					
+			 
 					LineNumberReader blr = new LineNumberReader(new FileReader ("stops.txt"));
 		
 					String line = " ";
@@ -52,15 +51,11 @@ public class FileRead {
 						}
 						
 					Set<String> number = new HashSet<String>(list);
-					int WordCount[];
-					WordCount= new int[list.size()];
-					int i= 0;
 					
+									
 					for (String key : number) 
 						{
 							WordList.put(key,Collections.frequency(list, key));
-							WordCount[i] = Collections.frequency(list, key); 
-							i++;
 						}
 						
 						
@@ -69,7 +64,8 @@ public class FileRead {
 						.forEach(x ->
 								{
 									System.out.println(x.getKey() + " = "+ x.getValue());
-				                });
+								}
+								);
 						
 				                
 						

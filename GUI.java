@@ -22,7 +22,7 @@ public class GUI extends FileRead implements ActionListener
 		//Background creation
 		frame1 = new JFrame ("Reading Files");
 		frame1.setVisible(true);
-		frame1.setSize(450,450);
+		frame1.setSize(465,465);
 		frame1.getContentPane().setBackground(new Color(5, 65, 90));
 		
 		//Panel creation
@@ -72,11 +72,11 @@ public class GUI extends FileRead implements ActionListener
 		StopWord.addActionListener(this);
 		
 		//
-		button4 = new JButton();
-		p2.add(button4);
-		button4.setText("Get n number of words to compare");
-		button4.setToolTipText("This will compare the files selected");
-		button4.addActionListener(this);
+		button3 = new JButton();
+		p2.add(button3);
+		button3.setText("Get n number of words to compare");
+		button3.setToolTipText("This will compare the files selected");
+		button3.addActionListener(this);
 		
 		button5 = new JButton();
 		p3.add(button5);
@@ -85,11 +85,11 @@ public class GUI extends FileRead implements ActionListener
 		button5.addActionListener(this);
 		
 		//Button to compare files
-		button3 = new JButton();
-		p4.add(button3);
-		button3.setText("Compare Files");
-		button3.setToolTipText("This will compare the files selected");
-		button3.addActionListener(this);
+		button4 = new JButton();
+		p4.add(button4);
+		button4.setText("Compare Files");
+		button4.setToolTipText("This will compare the files selected");
+		button4.addActionListener(this);
 				 
 		//File Creation
 		newfile = new JFileChooser();
@@ -118,14 +118,14 @@ public class GUI extends FileRead implements ActionListener
 				    }
 			}
 				
-			else if(e.getSource() == button4)
+			else if(e.getSource() == button3)
 			{
 				
 				i = Integer.parseInt(Userinput.getText());
 				
 			}
 			
-			else if(e.getSource() == button3)
+			else if(e.getSource() == button4)
 			{
 				
 				readfile(File1,i);
