@@ -22,7 +22,7 @@ public class GUI extends FileRead implements ActionListener
 		//Background creation
 		frame1 = new JFrame ("Reading Files");
 		frame1.setVisible(true);
-		frame1.setSize(500,500);
+		frame1.setSize(450,450);
 		frame1.getContentPane().setBackground(new Color(5, 65, 90));
 		
 		//Panel creation
@@ -118,49 +118,49 @@ public class GUI extends FileRead implements ActionListener
 				    }
 			}
 				
+			else if(e.getSource() == button4)
+			{
+				
+				i = Integer.parseInt(Userinput.getText());
+				
+			}
+			
 			else if(e.getSource() == button3)
 			{
 				
 				readfile(File1,i);
+				System.out.println("\n");
 				readfile(File2,i);
-				
-				
 				
 				if(L == 1)
 					{
 						//Calculate the percentage
 						double P = 0;
-						P = (counter*100/TempList.size());
-												
+						P = (counter*100/WordList.size());
+						
 						if (P <= 24)
-						{
-							JOptionPane.showMessageDialog(button3,"\nThese files have " + P +"% in common");
-							
-						}
+							{
+								JOptionPane.showMessageDialog(button3,"\nThese files have " + P +"% words in common");
+							}
 						
 						else if (P < 50 && P >= 25) 
-						{
-							JOptionPane.showMessageDialog(button3,"\nThese files have " + P +"% in common");
-						} 
+							{
+								JOptionPane.showMessageDialog(button3,"\nThese files have " + P +"% words in common");
+							} 
 						
 						else if (P >= 50 && P <= 99) 
 							
-						{
-							JOptionPane.showMessageDialog(button3,"\nThese files have " + P +"% in common\nThese files are very similar but not identical");
-						} 
+							{
+								JOptionPane.showMessageDialog(button3,"\nThese files have " + P +"% words in common\nThese files are very similar but not identical");
+							} 
 						
 						else if (P == 100) 
-						{
-							JOptionPane.showMessageDialog(button3,"\nThese files have " + P +"% in common\nThese files identical");
-							
-						}
+							{
+								JOptionPane.showMessageDialog(button3,"\nThese files have " + P +"% in words common\nThese files identical");
+								
+							}
 					}
-				else if(e.getSource() == button4)
-					{
-						
-						i = Integer.parseInt(Userinput.getText());
-						
-					}
+			
 				else if(e.getSource() == button5)
 					{
 						String k = StopWord.getText();

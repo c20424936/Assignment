@@ -8,20 +8,17 @@ public class FileRead {
 	
 	static int L = 0;
 	static int counter = 0;
-	static HashMap<String,Integer> TempList = new HashMap<>();
-	static HashMap<String,Integer> WordList = new HashMap<>();
-	
+	static HashMap<String,Integer> TempList = new HashMap<String,Integer>();
 	static ArrayList<String> stoplist = new ArrayList<String>();
+	static HashMap<String,Integer> WordList = new HashMap<>();
 	
 	public static void readfile(String file, int n) 
 		{
-			
-		 ArrayList<String> list = new ArrayList<String>();
-			
-			
-			try(LineNumberReader lr = new LineNumberReader(new FileReader (file)))
+		
+		 ArrayList<String> list = new ArrayList<String>();			
+		 try(LineNumberReader lr = new LineNumberReader(new FileReader (file)))
 				{
-					@SuppressWarnings("resource")
+					
 					LineNumberReader blr = new LineNumberReader(new FileReader ("stops.txt"));
 		
 					String line = " ";
@@ -35,7 +32,7 @@ public class FileRead {
 				            {    
 									stoplist.add(stopword);
 				            }
-				        }
+				    }
 					
 					while((line = lr.readLine()) != null) 
 						{
@@ -71,9 +68,9 @@ public class FileRead {
 						.limit(n)
 						.forEach(x ->
 								{
-									
-				                	System.out.println(x.getKey() + " = "+ x.getValue() + "\n");
+									System.out.println(x.getKey() + " = "+ x.getValue());
 				                });
+						
 				                
 						
 						for (String key : WordList.keySet())
@@ -85,16 +82,16 @@ public class FileRead {
 					            	if (TempList.containsValue(WordList.get(key))) 
 						            { 
 					            		counter++;
-					            	 
+					            		
 						            }
 					            		
 					            }
 							}
 							if (L == 0)
 							{
-	
 								TempList.putAll(WordList);
-								L = 1;
+								L++;
+								WordList.clear();
 							}
 						
 					}
@@ -111,6 +108,5 @@ public class FileRead {
 	
 /*
 References
-
 lines 71-76 was found online via stackoverflow (https://stackoverflow.com/questions/43922882/how-to-print-hashmap-elements-from-max-to-min) 
 */ 
