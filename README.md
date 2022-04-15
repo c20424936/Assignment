@@ -1,18 +1,24 @@
-# Assignment
-# OOP Assignment
+# OOP Assignment - 1. Topic Modeller
 ***********************************************************************
+# Classes:
+FileRead:
+This Class contains the code to compare 2 files using HashMaps and ArrayLists
 
-# GUI:
+
+GUI:Contains the code to display and input values to compare the files
+
+***********************************************************************
+# Funtionality:
 
 Button 1: File Chooser 1
 
 
 This button functions as the first file chooser,allowing the user to pick the first file that will be compared. Using the showOpenDialog fucntion, this opens a directory from which the user can select a .txt file. The name of the file will then be passed into readfile and opened when button3 is pressed.
 
-Button 2:
+Button 2: File Chooser 2
 
 
-This button functions identically to the first file chooser,allowing the user to pick the second file that will be compared. Using the showOpenDialog fucntion, this opens a directory from which the user can select a .txt file. The name of the file is stored in a string and then passed into readfile and opened when button4 is pressed 
+This button functions identically to the first file chooser,allowing the user to pick the second file that will be compared. Using the showOpenDialog fucntion, this opens a directory from which the user can select a .txt file. The name of the file is stored in a string and then passed into readfile and opened when button4 is pressed.
 
 
 Button 3: Choose top N value 
@@ -32,5 +38,10 @@ Button 5: Adding Stop Words
 This button takes the input of the JTextfield stopword and adds it to the stop words list. This will not count the word entered.
 
 
+*****************************************************************************************************
+# What I would add/change
+If I had extra time i would change the readfile and GUI to allow the top N words to be printed in a table in the GUI or as a JOptionPane.showMessageDialog() when a new button is pressed. I would also add the percistance optional feature to improve the overall funtionality of the assignment.
+
+*****************************************************************************************************
 # Layout of the GUI:
 ![image](https://user-images.githubusercontent.com/103035902/163566266-b3ac639f-7c51-4dd9-b409-6bb2a849e432.png)
