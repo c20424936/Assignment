@@ -18,12 +18,12 @@ This button functions identically to the first file chooser,allowing the user to
 Button 3: Choose top N value 
 
 
-When pressed this button selects top N amount of elements to later compare in both files using a JTextfield, which converts the input to an integer using parseInt. 
+When pressed, button3 selects top N amount of elements to later compare in both files using a JTextfield, which converts the input to an integer using parseInt. 
 
 Button 4: Compare the files
 
 
-When button3 is pressed, it takes the 2 strings of the filenames and the top N values and passes it to the readfile method in the FileRead class. This runs 2 times, once per file. When the methods is ran, the file is opened and creates an arraylist containing all stop words. This list of stop words is then compared to the contents of the first file and if there is no match the word is added to the arraylist.  
+When button4 is pressed, it takes the 2 strings of the filenames and the top N values and passes it to the readfile method in the FileRead class. This runs 2 times, once per file. When the methods is first ran, the file is opened and creates an arraylist "stoplist" containing all stop words. This list of stop words is then compared to the contents of the first file and if there is no match the word is added to the arraylist "list". This arraylist is then added to a HashMap "WordList" that puts the word and its frequency into the hashmap. This HashMap is then added to a new hashmap which oreders the wordlist and limits it to the top N values given in the GUI. This then prints the word and the frequency of the word in the terminal. If the code has only been ran once the contents of WordList will be placed into the HashMap "TempList" and clear Wordlist. The code is then ran again with the second file. The words are filtered again and added to the wordlist and printed into the terminal.However now the WordList will be compared to the "TempList", containing words from file1. This will add to a counter of common words that will be used to calculate the percentage of duplicate words and compare the 2 files. This value is then shown using a JOptionPane.showMessageDialog() along with a message to show the commonality of the files. 
 
 
 Button 5: Adding Stop Words
