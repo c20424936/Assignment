@@ -45,3 +45,7 @@ If I had extra time i would change the readfile and GUI to allow the top N words
 *****************************************************************************************************
 # Layout of the GUI:
 ![image](https://user-images.githubusercontent.com/103035902/163566266-b3ac639f-7c51-4dd9-b409-6bb2a849e432.png)
+
+*****************************************************************************************************
+# Video displaying the code
+https://youtu.be/jF8_Ih-xMLc
